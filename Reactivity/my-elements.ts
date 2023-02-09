@@ -26,6 +26,9 @@ export class MyElement extends LitElement {
     this.duration = Number.parseInt(v);
   }
 
+  shouldUpdate(changedProperties: PropertyValues<this>): boolean {
+    return !(changedProperties.size === 1 && changedProperties.has('duration'));
+  }
 
   render() {
     this._renderCount++;
