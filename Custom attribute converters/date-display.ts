@@ -8,6 +8,7 @@ export class DateDisplay extends LitElement {
 
   @property({type: String, attribute: 'date-str'})
   dateStr = '';
+
   willUpdate(changed: PropertyValues<this>) {
     if (changed.has('dateStr') && this.dateStr) {
       this.date = new Date(this.dateStr);
@@ -23,3 +24,4 @@ export class DateDisplay extends LitElement {
     `;
   }
 }
+
