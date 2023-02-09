@@ -9,7 +9,9 @@ export class MyElement extends LitElement {
 
   removeItem(item: string) {
     const indexToRemove = this.groceries.indexOf(item);
-    this.groceries.splice(indexToRemove, 1);
+    //this.groceries.splice(indexToRemove, 1);
+    this.groceries =
+    this.groceries.filter((_, i) => i !== indexToRemove);
   }
 
   render() {
