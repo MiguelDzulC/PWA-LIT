@@ -8,7 +8,6 @@ export class DateDisplay extends LitElement {
 
   @property({type: String, attribute: 'date-str'})
   dateStr = '';
-
   render() {
     const locale = 'en-US';
     const options: Intl.DateTimeFormatOptions =
