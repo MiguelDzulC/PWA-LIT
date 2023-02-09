@@ -9,10 +9,9 @@ export class MoreExpressions extends LitElement {
   render() {
     return html`
       <div>
-         <!-- TODO: Add expression to input. -->
-         <input type="text" value="Hello there.">
+        <input type="text" ?disabled=${!this.checked} value="Holaa.">
       </div>
-      <label><input type="checkbox" @change=${this.setChecked}> Enable editing</label>
+      <label><input type="checkbox" @change=${this.setChecked}> Selecciona la casilla</label>
     `;
   }
 
@@ -20,5 +19,4 @@ export class MoreExpressions extends LitElement {
     this.checked = (event.target as HTMLInputElement).checked;
   }
 }
-
 
