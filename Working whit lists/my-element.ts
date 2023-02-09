@@ -1,16 +1,18 @@
 import {html, css, LitElement} from 'lit';
 import {customElement} from 'lit/decorators.js';
+import {range} from 'lit/directives/range.js';
+import {map} from 'lit/directives/map.js';
 // TODO: Import directives
 
 @customElement('my-element')
 class MyElement extends LitElement {
   static styles = css`
-    /* playground-fold */
     :host {
       display: block;
       width: 400px;
       height: 400px;
     }
+
     #board {
       display: grid;
       grid-template-columns: repeat(8, 1fr);
@@ -38,7 +40,9 @@ class MyElement extends LitElement {
     return html`
       <p>Let's play a game!</p>
       <div id="board">
-        <!-- TODO: Place squares here. -->
+      ${map(range(8), (row) => map(range(8), (col) => html`
+      <div class="${getColor(row, col)}">${getLabel(row, col)}</div>
+    `))}
       </div>
     `;
   }
