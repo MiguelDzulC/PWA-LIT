@@ -11,6 +11,7 @@ const createElement = (chars: string): SVGTemplateResult => svg`
     ${chars}
   </text>
 `;
+
 @customElement('repeat-pattern')
 export class RepeatPattern extends LitElement {    
   @property({type: String}) chars = "lit";
