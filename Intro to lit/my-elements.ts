@@ -17,43 +17,49 @@ export class ToDoList extends LitElement {
 
   @state()
   private _listItems = [
-    { text: 'Make to-do list', completed: true },
-    { text: 'Complete Lit tutorial', completed: false }
+  { text: 'Lista entendida', completed: true },
+    { text: 'terminar tutorial 1', completed: false }
   ];
   @property()
   hideCompleted = false;
 
   render() {
-    // TODO: Replace items definition.
-    const items = this._listItems;
+    const items = this.hideCompleted
+      ? this._listItems.filter((item) => !item.completed)
+      : this._listItems;
     const todos = html`
       <ul>
         ${items.map((item) =>
-          html`
-            <li
-                class=${item.completed ? 'completed' : ''}
-                @click=${() => this.toggleCompleted(item)}>
-              ${item.text}
-            </li>`
+            html`
+              <li
+                  class=${item.completed ? 'completed' : ''}
+                  @click=${() => this.toggleCompleted(item)}>
+                ${item.text}
+              </li>`
         )}
       </ul>
     `;
-    // TODO: Define partial templates.
+    const caughtUpMessage = html`
+      <p>
+      Finalizaste todo
+      </p>
+    `;
+    const todosOrMessage = items.length > 0
+      ? todos
+      : caughtUpMessage;
+
     return html`
-      <h2>To Do</h2>
-      <!-- TODO: Update expression. -->
-      ${todos}
+      <h2>Lista</h2>
+      ${todosOrMessage}
       <input id="newitem" aria-label="New item">
-      <button @click=${this.addToDo}>Add</button>
+      <button @click=${this.addToDo}>Agregar</button>
       <br>
       <label>
         <input type="checkbox"
           @change=${this.setHideCompleted}
           ?checked=${this.hideCompleted}>
-        Hide completed
+        Tareas completadas
       </label>
-
-
     `;
   }
 
