@@ -31,4 +31,6 @@ class MyElement extends LitElement {
   }
 
   // TODO: Implement method to delete an item.
+  private _deleteThing(index: number) {
+    this.things = this.things.filter((_, i) => i !== index);
 }
