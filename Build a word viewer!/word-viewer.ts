@@ -1,5 +1,6 @@
 import { css, html, LitElement } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
+import { classMap } from 'lit/directives/class-map.js';
 
 @customElement('word-viewer')
 class WordViewer extends LitElement {
@@ -13,6 +14,7 @@ class WordViewer extends LitElement {
     pre {
       padding: 0.2em;
     }
+    /* TODO: Add .backwards styles */
   `;
 
   @state() private playDirection: -1 | 1 = 1;
@@ -37,6 +39,7 @@ class WordViewer extends LitElement {
     const idx = ((this.idx % splitWords.length) + splitWords.length) % splitWords.length;
     const word = splitWords[idx];
     return html`<pre
+      class="TODO: Use classMap expression"
       @click=${this.switchPlayDirection}
     >${word}</pre>`;
   }
