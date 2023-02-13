@@ -14,8 +14,11 @@ class WordViewer extends LitElement {
     pre {
       padding: 0.2em;
     }
-    /* TODO: Add .backwards styles */
-  `;
+    .backwards {
+      color: white;
+      background-color: violet;
+    }
+  `
 
   @state() private playDirection: -1 | 1 = 1;
   @state() private idx = 0;
@@ -39,7 +42,7 @@ class WordViewer extends LitElement {
     const idx = ((this.idx % splitWords.length) + splitWords.length) % splitWords.length;
     const word = splitWords[idx];
     return html`<pre
-      class="TODO: Use classMap expression"
+      class="${classMap({ backwards: this.playDirection === -1 })}"
       @click=${this.switchPlayDirection}
     >${word}</pre>`;
   }
