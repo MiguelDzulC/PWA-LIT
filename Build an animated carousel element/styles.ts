@@ -1,4 +1,4 @@
-mport {css} from 'lit';
+import {css} from 'lit';
 
 export const styles = css`
   :host {
@@ -17,6 +17,10 @@ export const styles = css`
     position: relative;
     height: 100%;
     width: 100%;
+  }
+
+  .selected {
+    top: -100%;
   }
 
   ::slotted(*) {
