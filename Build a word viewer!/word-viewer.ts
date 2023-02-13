@@ -28,7 +28,7 @@ class WordViewer extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.intervalTimer = setInterval(this.tickToNextWord, 1000);
+    this.intervalTimer = setInterval(this.tickToNextWord, 250);
   }
 
   disconnectedCallback() {
@@ -53,3 +53,4 @@ class WordViewer extends LitElement {
     this.playDirection *= -1;
   }
 }
+
