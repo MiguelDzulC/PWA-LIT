@@ -3,18 +3,28 @@ import { customElement, property, state } from 'lit/decorators.js';
 
 @customElement('word-viewer')
 class WordViewer extends LitElement {
-  // TODO: Add `static styles` using the `css` tag function.
+  static styles = css`
+    :host {
+      background-color: white;
+      color: violet;
+      cursor: pointer;
+      display: block;
+    }
+    pre {
+      padding: 0.2em;
+    }
+  `;
 
   @state() private idx = 0;
   @property() words = 'initial value';
 
   private intervalTimer?: number;
-  
+
   connectedCallback() {
     super.connectedCallback();
     this.intervalTimer = setInterval(this.tickToNextWord, 1000);
   }
-  
+
   disconnectedCallback() {
     super.disconnectedCallback();
     clearInterval(this.intervalTimer);
