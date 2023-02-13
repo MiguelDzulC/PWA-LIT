@@ -1,8 +1,10 @@
-import { html, LitElement } from 'lit';
+import { css, html, LitElement } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 
 @customElement('word-viewer')
 class WordViewer extends LitElement {
+  // TODO: Add `static styles` using the `css` tag function.
+
   @state() private idx = 0;
   @property() words = 'initial value';
 
@@ -27,4 +29,3 @@ class WordViewer extends LitElement {
 
   tickToNextWord = () => { this.idx += 1; };
 }
-
