@@ -15,7 +15,7 @@ class WordViewer extends LitElement {
     }
   `;
 
-  // TODO: Add `playDirection` state.
+  @state() private playDirection: -1 | 1 = 1;
   @state() private idx = 0;
   @property() words = 'initial value';
 
@@ -34,13 +34,16 @@ class WordViewer extends LitElement {
 
   render() {
     const splitWords = this.words.split('.');
-    // TODO: Update math so it won't go negatively out of bounds.
-    const word = splitWords[this.idx % splitWords.length];
-    // TODO: Add @click event handler that calls `this.switchPlayDirection`
-    return html`<pre>${word}</pre>`;
+    const idx = ((this.idx % splitWords.length) + splitWords.length) % splitWords.length;
+    const word = splitWords[idx];
+    return html`<pre
+      @click=${this.switchPlayDirection}
+    >${word}</pre>`;
   }
-  // TODO: Increment by `this.playDirection`
-  tickToNextWord = () => { this.idx += 1; };
 
-  // TODO: Add switchPlayDirection method.
+  tickToNextWord = () => { this.idx += this.playDirection; };
+
+  switchPlayDirection() {
+    this.playDirection *= -1;
+  }
 }
